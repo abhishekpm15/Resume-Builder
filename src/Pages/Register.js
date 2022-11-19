@@ -23,7 +23,7 @@ const Register = () => {
     createUserWithEmailAndPassword(auth, registerEmail, registerPassword).then(
       (response) => {
         toast.success("Sucessfully registered");
-        navigate("/Signout");
+        navigate("/");
         console.log(response);
       },
       (err) => {
@@ -55,7 +55,7 @@ const Register = () => {
         <CardFooter>
           <Button onClick={register}> Register </Button>
           <Typography color="blue" className="my-5">
-            Already a user?<Link to="/"> Login </Link>
+            Already a user?<Link to="/Login"> Login </Link>
           </Typography>
         </CardFooter>
       </Card>

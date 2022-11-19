@@ -15,29 +15,24 @@ import GoogleButton from "react-google-button";
 import { useAuth } from "../context/AuthContext";
 
 const Login = () => {
-  const { user , setUser} = useAuth();
+  // const { user , setUser} = useAuth();
   const navigate = useNavigate();
   const auth = getAuth();
   const user2 = auth.currentUser;
   if(user2){
-    navigate("/HomePage");
+    navigate("/");
     // setUser(user2);
     // console.log(user2); 
   }
   // else{
   //   setUser(null);
   // }
- 
   const [loginEmail, setloginEmail] = useState("");
   const [loginPassword, setloginPassword] = useState("");
-
   const { SignUp } = useAuth();
-
-
   const signInWithGoogle = () => {
     SignUp();
   };
-
 
   const signIn = async () => {
     signInWithEmailAndPassword(auth, loginEmail, loginPassword).then(

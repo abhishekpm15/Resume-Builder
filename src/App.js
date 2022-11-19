@@ -6,6 +6,7 @@ import Register from "./Pages/Register";
 import HomePage from "./Pages/HomePage";
 import Contact from "./Pages/Contact";
 import About from "./Pages/About";
+import BuildPage from "./Pages/BuildPage";
 
 function App() {
   return (
@@ -13,11 +14,12 @@ function App() {
       <AuthContextProvider>
         <Router>
           <Routes>
-            <Route path="/" element={<Login />} />
+            <Route path="/" element={<HomePage />} />
             <Route path="/Register" element={<Register />} />
-            <Route path="/HomePage" element={<HomePage />} />
+            <Route path="/Login" element={<Login />} />
             <Route path="/Contact" element={<Contact />} />
             <Route path="/About" element={<About />} />
+            <Route path="/BuildPage" element={<BuildPage />} />
           </Routes>
         </Router>
       </AuthContextProvider>
