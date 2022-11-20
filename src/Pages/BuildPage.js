@@ -2,17 +2,35 @@ import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import ReactLoading from "react-loading";
 import { Button } from "@material-tailwind/react";
-import { results2 } from "./HomePage";
+import { useCSVReader } from "react-papaparse";
 import "./BuildPage.css";
 // function saveDocumentToFile(doc, fileName) {
 //   Packer.toBlob(doc).then((blob) => {
 //     saveAs(blob, fileName);
 //   });
 // }
+export const results2 = [];
+export const results3 = [];
+export const results4 = [];
+
+// const flag = 0;
+// const flag2 = 0;
+// const flag3 = 0;
 
 const BuildPage = () => {
-  const [build, setBuild] = useState(false);
 
+  const { CSVReader } = useCSVReader();
+  const [build, setBuild] = useState(false);
+  const [uploaded, setUploaded] = useState(false);
+  const [flag1 ,setFlag1] = useState(false);
+  const [flag2 ,setFlag2] = useState(false);
+  const [flag3 ,setFlag3] = useState(false);
+  const [buttons ,setButton] = useState(false);
+  if(flag1 && flag2 && flag3){
+   
+  
+  }
+   
   //   let doc = new Document();
   //   doc.createParagraph("Hello World");
   // saveDocumentToFile(doc,"First.docx");
@@ -36,13 +54,147 @@ const BuildPage = () => {
           />
         </div>
       ) : (
-        <div className="content">
-          <div>Please be patient.. We are building your Resume</div>
-          <div>
-            {/* <img src={Building} alt="Building" /> */}
-            <Button>Download</Button>
-          </div>
-        <div className="flex justify-center">
+        <div className=" stepscontainer bg-[url('https://www.resumonk.com/assets/bgs/pattern-a22a4b6635b785fb8a96255f4b0377efdee937e81e32cf3c3e7d23c4b95768da.png')] bg-contain w-screen h-screen">
+          <div className="content ">
+            <div className="text-xl flex justify-center">
+              <div className="mt-20">
+                <div className="mt-10 m-5 upload text-lg">
+                  Upload your Certificates.csv file
+                </div>
+                <CSVReader
+                  onUploadAccepted={(results: any) => {
+                    console.log(results.data[0]);
+                    results2.push(results.data);
+                    setUploaded(true);
+                    setFlag1(true)
+                  }}
+                >
+                  {({
+                    getRootProps,
+                    acceptedFile,
+                    ProgressBar,
+                    getRemoveFileProps,
+                  }) => (
+                    <>
+                      <div className="my-auto mx-auto w-36">
+                        <Button className="btn" {...getRootProps()}>
+                          Browse file
+                        </Button>
+                        <div className=" mx-7 border-solid border-black h-5 my-3 text-sm">
+                          {acceptedFile && acceptedFile.name}
+                        </div>
+                        {acceptedFile && acceptedFile.name ? (
+                          <>
+                            <Button
+                              {...getRemoveFileProps()}
+                              color="red"
+                              className="px-4 inline-block btn"
+                            >
+                              Remove
+                            </Button>
+                          </>
+                        ) : (
+                          <></>
+                        )}
+                      </div>
+                      {/* <ProgressBar className="bg-red" /> */}
+                    </>
+                  )}
+                </CSVReader>
+              </div>
+              <div className="mt-20">
+                <div className="mt-10 m-5 upload text-lg">
+                  Upload your Profile.csv file
+                </div>
+                <CSVReader
+                  onUploadAccepted={(results: any) => {
+                    console.log(results.data[0]);
+                    results3.push(results.data);
+                    setUploaded(true);
+                    setFlag2(true)
+                  }}
+                >
+                  {({
+                    getRootProps,
+                    acceptedFile,
+                    ProgressBar,
+                    getRemoveFileProps,
+                  }) => (
+                    <>
+                      <div className="my-auto mx-auto w-36">
+                        <Button className="btn" {...getRootProps()}>
+                          Browse file
+                        </Button>
+                        <div className=" mx-7 border-solid border-black h-5 my-3 text-sm">
+                          {acceptedFile && acceptedFile.name}
+                        </div>
+                        {acceptedFile && acceptedFile.name ? (
+                          <>
+                            <Button
+                              {...getRemoveFileProps()}
+                              color="red"
+                              className="px-4 inline-block btn"
+                            >
+                              Remove
+                            </Button>
+                          </>
+                        ) : (
+                          <></>
+                        )}
+                      </div>
+                      {/* <ProgressBar className="bg-red" /> */}
+                    </>
+                  )}
+                </CSVReader>
+              </div>
+              <div className="mt-20">
+                <div className="mt-10 m-5 upload text-lg">
+                  Upload your Skills.csv file
+                </div>
+                <CSVReader
+                  onUploadAccepted={(results: any) => {
+                    console.log(results.data[0]);
+                    results4.push(results.data);
+                    setUploaded(true);
+                    setFlag3(true)
+                  }}
+                >
+                  {({
+                    getRootProps,
+                    acceptedFile,
+                    ProgressBar,
+                    getRemoveFileProps,
+                  }) => (
+                    <>
+                      <div className="my-auto mx-auto w-36">
+                        <Button className="btn" {...getRootProps()}>
+                          Browse file
+                        </Button>
+                        <div className=" mx-7 border-solid border-black h-5 my-3 text-sm">
+                          {acceptedFile && acceptedFile.name}
+                        </div>
+                        {acceptedFile && acceptedFile.name ? (
+                          <>
+                            <Button
+                              {...getRemoveFileProps()}
+                              color="red"
+                              className="px-4 inline-block btn"
+                            >
+                              Remove
+                            </Button>
+                          </>
+                        ) : (
+                          <></>
+                        )}
+                      </div>
+                      {/* <ProgressBar className="bg-red" /> */}
+                    </>
+                  )}
+                </CSVReader>
+              </div>
+            </div>
+
+            {/* <div className="flex justify-center">
           {
             <div className="float-left">
               <div className="my-10">
@@ -117,8 +269,29 @@ const BuildPage = () => {
               </div>
             </div>
           }
+          </div> */}
+            {(flag1 && flag2 && flag3) ? (
+              <>
+                <div className="mt-[15%]">
+                  Please be patient.. We are building your Resume
+                </div>
+                <div>
+                 {
+                   setTimeout(() => {
+                     setButton(true);
+                   }, 5000)
+                 }
+                 {
+                    (buttons) ? <Button className="mt-4 mx-4">PREVIEW</Button> : <div></div>
+                  }
+                  {
+                    (buttons) ? <Button className="mt-4 mx-4">Download</Button> : <div></div>
+                  }
+                  
+                </div>
+              </>
+            ) : null}
           </div>
-          
         </div>
       )}
     </div>
