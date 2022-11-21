@@ -4,21 +4,29 @@ import ReactLoading from "react-loading";
 import { Button } from "@material-tailwind/react";
 import { useCSVReader } from "react-papaparse";
 import "./BuildPage.css";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 // function saveDocumentToFile(doc, fileName) {
 //   Packer.toBlob(doc).then((blob) => {
 //     saveAs(blob, fileName);
 //   });
 // }
-export const results2 = [];
-export const results3 = [];
-export const results4 = [];
 
-// const flag = 0;
-// const flag2 = 0;
-// const flag3 = 0;
+// export const results2 = [[]]
+const flag = 0;
+const flag2 = 0;
+const flag3 = 0;
 
 const BuildPage = () => {
-
+  const SettingResult = (e)=>{
+    console.log(results3)
+    setResults3(e)
+  }
+  // const {results2,setResults2,results3,setResults3,results4,setResults4} = useAuth()
+  const {results3,setResults3} = useAuth();
+  const navigate = useNavigate();
+  
+  // const [results3, setResults3] = useState([])
   const { CSVReader } = useCSVReader();
   const [build, setBuild] = useState(false);
   const [uploaded, setUploaded] = useState(false);
@@ -26,11 +34,10 @@ const BuildPage = () => {
   const [flag2 ,setFlag2] = useState(false);
   const [flag3 ,setFlag3] = useState(false);
   const [buttons ,setButton] = useState(false);
-  if(flag1 && flag2 && flag3){
-   
-  
-  }
-   
+ 
+  const PreviewNavigate = () => {
+    navigate("/PreviewPage");
+  };
   //   let doc = new Document();
   //   doc.createParagraph("Hello World");
   // saveDocumentToFile(doc,"First.docx");
@@ -63,8 +70,12 @@ const BuildPage = () => {
                 </div>
                 <CSVReader
                   onUploadAccepted={(results: any) => {
-                    console.log(results.data[0]);
-                    results2.push(results.data);
+                    // console.log(results.data[1][0]);
+                    // results2.push(results.data);
+                    SettingResult(results.data);
+                    
+                    // setResults2(results.data[0]);
+                    // console.log(results2)
                     setUploaded(true);
                     setFlag1(true)
                   }}
@@ -108,8 +119,9 @@ const BuildPage = () => {
                 </div>
                 <CSVReader
                   onUploadAccepted={(results: any) => {
-                    console.log(results.data[0]);
-                    results3.push(results.data);
+                    // console.log(results.data);
+                    // setResults3(results.data);
+                    // console.log(results3)
                     setUploaded(true);
                     setFlag2(true)
                   }}
@@ -153,8 +165,9 @@ const BuildPage = () => {
                 </div>
                 <CSVReader
                   onUploadAccepted={(results: any) => {
-                    console.log(results.data[0]);
-                    results4.push(results.data);
+                    // console.log(results.data);
+                    // setResults4(results.data[0]);
+                    // console.log(results4)
                     setUploaded(true);
                     setFlag3(true)
                   }}
@@ -194,27 +207,27 @@ const BuildPage = () => {
               </div>
             </div>
 
-            {/* <div className="flex justify-center">
-          {
+            <div className="flex justify-center">
+          
             <div className="float-left">
               <div className="my-10">
                 <hr className="border-2"></hr>
                 <div className="mx-3">
                 <div className="text-2xl flex justify-start font-bold"> Certificates </div>
-                  <div className="flex justify-start my-1">{results2[0][1][0]}</div>
-                  <div className="flex justify-start my-1"> {results2[0][2][0]}</div>
+                  {/* <div className="flex justify-start my-1">{results3[1][0]}</div> */}
+                  {/* <div className="flex justify-start my-1"> {results3[0][2][0]}</div>
                   <div className="flex justify-start my-1">{results2[0][3][0]}</div>
                   <div className="flex justify-start my-1">{results2[0][4][0]}</div>
                   <div className="flex justify-start my-1">{results2[0][5][0]}</div>
                   <div className="flex justify-start my-1">{results2[0][6][0]}</div>
                   <div className="flex justify-start my-1">{results2[0][7][0]}</div>
-                  <div className="flex justify-start my-1">{results2[0][8][0]}</div>
+                  <div className="flex justify-start my-1">{results2[0][8][0]}</div> */}
                 </div>
               </div>
             </div>
-          }
-          {
-            <div className="float-right">
+          
+          
+            {/* <div className="float-right">
               <div className="my-10">
                 <hr className="border-2"></hr>
                 <div className="mx-3">
@@ -230,10 +243,10 @@ const BuildPage = () => {
                 </div>
               </div>
             </div>
-          }
+          
           </div>
           <div className="flex justify-center">
-          {
+          
             <div className="float-left">
               <div className="my-10">
                 <hr className="border-2"></hr>
@@ -250,8 +263,7 @@ const BuildPage = () => {
                 </div>
               </div>
             </div>
-          }
-          {
+          
             <div className="float-right">
               <div className="my-10">
                 <hr className="border-2"></hr>
@@ -267,9 +279,9 @@ const BuildPage = () => {
                   <div className="flex justify-start my-1">{results2[0][8][3]}</div>
                 </div>
               </div>
-            </div>
-          }
-          </div> */}
+            </div> */}
+          
+          </div>
             {(flag1 && flag2 && flag3) ? (
               <>
                 <div className="mt-[15%]">
@@ -279,10 +291,10 @@ const BuildPage = () => {
                  {
                    setTimeout(() => {
                      setButton(true);
-                   }, 5000)
+                   }, 1000)
                  }
                  {
-                    (buttons) ? <Button className="mt-4 mx-4">PREVIEW</Button> : <div></div>
+                    (buttons) ? <Button className="mt-4 mx-4" onClick={PreviewNavigate}>PREVIEW</Button> : <div></div>
                   }
                   {
                     (buttons) ? <Button className="mt-4 mx-4">Download</Button> : <div></div>

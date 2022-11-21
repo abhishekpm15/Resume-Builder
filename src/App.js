@@ -8,6 +8,7 @@ import Contact from "./Pages/Contact";
 import About from "./Pages/About";
 import BuildPage from "./Pages/BuildPage";
 import UploadPage from "./Pages/UploadPage";
+import PreviewPage from "./Pages/PreviewPage";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path="/About" element={<About />} />
             <Route path="/UploadPage" element={<UploadPage />} />
             <Route path="/BuildPage" element={<BuildPage />} />
+            <Route path="/PreviewPage" element={<PreviewPage />} />
           </Routes>
         </Router>
       </AuthContextProvider>
