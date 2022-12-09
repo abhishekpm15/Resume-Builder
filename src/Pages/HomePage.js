@@ -1,21 +1,17 @@
 import React, { useState, useEffect } from "react";
 import Header from "../components/Header";
-import { useCSVReader } from "react-papaparse";
 import { Button } from "@material-tailwind/react";
 import "./HomePage.css";
 import svgimage from "../assets/undraw_online_cv_re_gn0a.svg";
 import { useNavigate } from "react-router-dom";
 import ReactLoading from "react-loading";
-import Footer from "../components/Footer";
-
-
+import { getAuth } from "firebase/auth";
 
 const HomePage = () => {
   const navigate = useNavigate();
-  // const { CSVReader } = useCSVReader();
-  // const [uploaded, setUploaded] = useState(false);
+  const auth = getAuth();
+  const user2 = auth.currentUser;
   const [load, setLoad] = useState(undefined);
-  // const [accept, setAccept] = useState(false);
 
   useEffect(() => {
     setTimeout(() => {
@@ -24,14 +20,11 @@ const HomePage = () => {
   }, []);
 
   const StartBuild = () => {
-    // setTimeout(() => {
-    //   setLoad(true);
-    // }, 2000);
     navigate("/UploadPage");
   };
   return (
     <div>
-      {!load  ? (
+      {!load ? (
         <div className="loading flex justify-center my-[10%]">
           <ReactLoading
             type="bubbles"
@@ -42,7 +35,11 @@ const HomePage = () => {
         </div>
       ) : (
         <div className="bg-[url('https://www.resumonk.com/assets/bgs/pattern-a22a4b6635b785fb8a96255f4b0377efdee937e81e32cf3c3e7d23c4b95768da.png')] bg-contain w-screen h-screen">
-          {/* <div className=" justify-center items-center top-0 left-0 w-full h-full bg-white opacity-90"> */}
+          <div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+          </div>
           <Header />
 
           <div className="maincontent">
@@ -66,9 +63,19 @@ const HomePage = () => {
             </div>
           </div>
           <div className="text-4xl text-center duration-300 hover:scale-110 hover:delay-75  my-auto">
-            <Button color="amber" className="hover:bg-purple-300 hover:text-white" onClick={StartBuild}>
-              GET STARTED{" "}
-            </Button>
+            {user2 ? (
+              <>
+                <Button
+                  color="amber"
+                  className=" hover:text-white"
+                  onClick={StartBuild}
+                >
+                  GET STARTED{" "}
+                </Button>
+              </>
+            ) : (
+              <div className="text-2xl signin">Sign in to get started</div>
+            )}
           </div>
         </div>
       )}

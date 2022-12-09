@@ -6,9 +6,10 @@ import Register from "./Pages/Register";
 import HomePage from "./Pages/HomePage";
 import Contact from "./Pages/Contact";
 import About from "./Pages/About";
-import BuildPage from "./Pages/BuildPage";
 import UploadPage from "./Pages/UploadPage";
 import PreviewPage from "./Pages/PreviewPage";
+import BuildPage2 from "./Pages/BuildPage2";
+import ResumePage from "./Pages/ResumePage";
 
 function App() {
   return (
@@ -22,8 +23,9 @@ function App() {
             <Route path="/Contact" element={<Contact />} />
             <Route path="/About" element={<About />} />
             <Route path="/UploadPage" element={<UploadPage />} />
-            <Route path="/BuildPage" element={<BuildPage />} />
+            <Route path="/BuildPage2" element={<BuildPage2 />} />
             <Route path="/PreviewPage" element={<PreviewPage />} />
+            <Route path="/ResumePage" element={<ResumePage />} />
           </Routes>
         </Router>
       </AuthContextProvider>
