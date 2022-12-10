@@ -104,12 +104,10 @@ const BuildPage2 = () => {
                     </Card>
                     <form
                       method="post"
-                      action="http://localhost:8000/phpworkspace/ResumeDetails/create.php"
-                    >
+                      action="http://localhost/Resume-Builder-v1.0/Resume-Builder/create.php"
+                      >
                       <Button
                         type="submit"
-                        name="submit"
-                        value="submit"
                         // onClick={navtobuild}
                         className="my-5 bg-light-blue-600 text-white active:bg-blue-600 font-bold text-sm px-6 py-3"
                       >

@@ -33,14 +33,14 @@ const BuildPage3 = () => {
         </div>
       ) : (
         <div className=" stepscontainer bg-[url('https://www.resumonk.com/assets/bgs/pattern-a22a4b6635b785fb8a96255f4b0377efdee937e81e32cf3c3e7d23c4b95768da.png')] bg-contain w-screen h-screen">
-          <form
+          {/* <form
             method="post"
-            action="http://localhost:8000/phpworkspace/ResumeDetails/create.php"
-          >
+            action="http://localhost/ResumeDetails/create.php"
+          > */}
             {/* <label>Your Name:</label> */}
             {/* <input type="text" name="name" placeholder="Your name" /> */}
-            <input type="submit" value="Submit" />
-          </form>
+            {/* <input type="submit" value="Submit" /> */}
+          {/* </form> */}
         </div>
       )}
     </div>
