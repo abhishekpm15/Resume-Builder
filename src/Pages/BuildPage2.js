@@ -1,88 +1,104 @@
-import React, { useCallback, useEffect, useState } from "react";
-import Header from "../components/Header";
-import ReactLoading from "react-loading";
 import { Button } from "@material-tailwind/react";
-import "./BuildPage2.css";
+import React, { useEffect, useState } from "react";
+import ReactLoading from "react-loading";
 import { useNavigate } from "react-router-dom";
-let i = 0;
-const names = [
-  "Please wait while we process your Resume",
-  "Just few more moments",
-  "Here is your Resume",
-];
+import Header from "../components/Header";
 
+import "./BuildPage2.css";
 const BuildPage2 = () => {
+
   const navigate = useNavigate();
+  const [build, setBuild] = useState(false);
+
+  const StartUpload = () => {
+    navigate("/LinkedInUpload");
+  };
+
   useEffect(() => {
     setTimeout(() => {
       setBuild(true);
     }, 2000);
   }, []);
 
-  const [loaded, setLoaded] = useState(false);
-  const upload = () => {
-    setLoaded(true);
-    setTimeout(() => {
-      setLoaded(false);
-      navigate("/ResumePage");
-    }, 15000);
-  };
-
-  const [newName, setnewName] = useState("");
-
-  const shuffle = useCallback(() => {
-    const index = i++;
-    setnewName(names[index]);
-  }, []);
-
-  useEffect(() => {
-    const intervalID = setInterval(shuffle, 5000);
-    return () => clearInterval(intervalID);
-  }, [shuffle]);
-
-  const [build, setBuild] = useState(false);
   return (
     <div>
-      <Header />
-      {loaded ? (
-        <div className="justify-center my-[10%]">
-          <div className="text-3xl all-names">{newName}</div>
-          <div className="flex justify-center">
-            <ReactLoading
-              type="cubes"
-              color="#00BFFF"
-              height={667}
-              width={375}
-            />
+      <div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
           </div>
+      <Header />
+      {!build ? (
+        <div className="flex justify-center my-[10%]">
+          <ReactLoading
+            type="bubbles"
+            color="#7854F3"
+            height={667}
+            width={375}
+          />
         </div>
       ) : (
-        <>
-          {!build ? (
-            <div className="flex justify-center my-[6%]">
-              <ReactLoading
-                type="bubbles"
-                color="#00BFFF"
-                height={667}
-                width={375}
-              />
-            </div>
-          ) : (
-            <div>
-              <div className=" stepscontainer bg-[url('https://www.resumonk.com/assets/bgs/pattern-a22a4b6635b785fb8a96255f4b0377efdee937e81e32cf3c3e7d23c4b95768da.png')] bg-contain w-screen h-screen">
-                <input
-                  type={"file"}
-                  accept={".zip"}
-                  className="my-9"
-                  name="file"
-                />
-                <Button type="submit" name="submit" onClick={upload} className="mx-4">
-                  Submit
-                </Button>
+        <div className=" stepscontainer bg-[url('https://www.resumonk.com/assets/bgs/pattern-a22a4b6635b785fb8a96255f4b0377efdee937e81e32cf3c3e7d23c4b95768da.png')] bg-contain w-screen h-screen">
+          <div className="transition mt-10 text-[35px] stepsHead duration-300 hover:scale-110 ">
+            Here are the steps you should follow
+          </div>
+          <div className="steps mt-10 w-auto">
+            <div className="font-bold text-2xl flex w-[700px] mx-[27%] ">
+              {" "}
+              Step 1 :
+              <div className="font-bold text-xl mx-5 my-auto float-left">
+                Download your complete LinkedIn profile as a zip file
               </div>
             </div>
-          )}
-        </>
+            <div className="my-3 mt-3 w-[40%] mx-[31%] text-left">
+              LinkedIn provides the complete profile data in a zip file and it
+              only takes a few minutes to download it. EasyClick can convert
+              this zip file to an impressive resume automatically.
+              <div className="mt-2">
+                1 . You can download your LinkedIn profile as a zip file by{" "}
+                <a
+                  href="https://www.linkedin.com/mypreferences/d/download-my-data"
+                  target="_blank"
+                  rel="noreferrer"
+                  alt="link"
+                >
+                  <u>Clicking this </u>
+                </a>
+              </div>
+            </div>
+            <div className="font-bold text-2xl flex my-7 w-[700px] mx-[27%]">
+              {" "}
+              Step 2 :
+              <div className="font-bold text-xl mx-5 my-auto">
+                Upload Zip file
+              </div>
+            </div>
+            <div className="my-3 mt-7 flex w-[40%] mx-[31%] text-left">
+              Upload the downloaded zip file to the input field and subit the form.
+              EasyClick will convert your LinkedIn profile to a resume in a few seconds.
+            </div>
+
+            <div className="font-bold text-2xl flex my-7 w-[700px] mx-[27%]">
+              {" "}
+              Step 3 :
+              <div className="font-bold text-xl mx-5 my-auto">
+                Your Resume is ready
+              </div>
+            </div>
+            <div className="my-3 mt-7 flex w-[40%] mx-[31%] text-left">
+              Download your resume in the format you want (PDF, DOCX)
+            </div>
+          </div>
+          <div className="text-4xl  text-center duration-300 hover:scale-110 hover:delay-75  my-10">
+            <Button
+              color="amber"
+              className="hover:text-white"
+              onClick={StartUpload}
+            >
+              START UPLOADING{" "}
+            </Button>
+          </div>
+        </div>
       )}
     </div>
   );

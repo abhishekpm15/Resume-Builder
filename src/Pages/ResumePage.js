@@ -49,7 +49,7 @@ const ResumePage = () => {
         <div className="flex justify-center my-[10%]">
           <ReactLoading
             type="bubbles"
-            color="#00BFFF"
+            color="#7854F3"
             height={667}
             width={375}
           />

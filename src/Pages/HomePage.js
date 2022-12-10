@@ -28,7 +28,7 @@ const HomePage = () => {
         <div className="loading flex justify-center my-[10%]">
           <ReactLoading
             type="bubbles"
-            color="#00BFFF"
+            color="#7854F3"
             height={667}
             width={375}
           />
@@ -43,12 +43,11 @@ const HomePage = () => {
           <Header />
 
           <div className="maincontent">
-            <div className="text-4xl mb-7 mt-5 heading1 duration-300 hover:scale-110">
+            <div className="text-4xl mb-7 mt-5 heading1 duration-300 ">
               Welcome to Easy Click
             </div>
-            <div className="text-3xl heading2 duration-300 hover:scale-110">
-              Easy Click will help you build your personal resume using LinkedIn
-              profile
+            <div className="text-2xl heading2 duration-300 ">
+              Easy Click will help you build your personal resume
             </div>
             <div className="para text-lg text-gray-800 mt-5">
               <p>
@@ -62,7 +61,7 @@ const HomePage = () => {
               </div>
             </div>
           </div>
-          <div className="text-4xl text-center duration-300 hover:scale-110 hover:delay-75  my-auto">
+          <div className="text-4xl text-center  my-auto">
             {user2 ? (
               <>
                 <Button
@@ -74,7 +73,7 @@ const HomePage = () => {
                 </Button>
               </>
             ) : (
-              <div className="text-2xl signin">Sign in to get started</div>
+              <div className="text-2xl signin w-auto h-auto">Sign in to get started</div>
             )}
           </div>
         </div>
