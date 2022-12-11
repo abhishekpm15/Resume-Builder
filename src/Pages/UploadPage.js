@@ -17,6 +17,13 @@ let i = 0;
 const names = [
   "Please wait while we process your Resume",
   "Just few more moments",
+  "Please wait while we process your Resume",
+  "Just few more moments",
+  "Here is your Resume",
+  "Please wait while we process your Resume",
+  "Just few more moments",
+  "Please wait while we process your Resume",
+  "Just few more moments",
   "Here is your Resume",
 ];
 
@@ -24,6 +31,7 @@ const BuildPage2 = () => {
   const navigate = useNavigate();
   useEffect(() => {
     setTimeout(() => {
+      setLoaded(true);
       setBuild(true);
     }, 2000);
   }, []);
@@ -31,10 +39,8 @@ const BuildPage2 = () => {
   const navtolinkedin = () => {
     navigate("/BuildPage2");
   };
-  // const navtobuild = () => {
-  //   navigate("/BuildPage3");
-  // };
-  const [loaded, setLoaded] = useState(false);
+
+  const [loaded, setLoaded] = useState(undefined);
 
   const [newName, setnewName] = useState("");
 
@@ -56,7 +62,7 @@ const BuildPage2 = () => {
         <div class="wave"></div>
       </div>
       <Header />
-      {loaded ? (
+      {!loaded ? (
         <div className="justify-center my-[10%]">
           <div className="text-3xl all-names">{newName}</div>
           <div className="flex justify-center">
