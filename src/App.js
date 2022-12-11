@@ -7,7 +7,6 @@ import HomePage from "./Pages/HomePage";
 import Contact from "./Pages/Contact";
 import About from "./Pages/About";
 import UploadPage from "./Pages/UploadPage";
-import PreviewPage from "./Pages/PreviewPage";
 import BuildPage2 from "./Pages/BuildPage2";
 import ResumePage from "./Pages/ResumePage";
 import BuildPage3 from "./Pages/BuildPage3";
@@ -29,7 +28,6 @@ function App() {
             <Route path="/BuildPage2" element={<BuildPage2 />} />
             <Route path="/BuildPage3" element={<BuildPage3 />} />
             <Route path="/LinkedInUpload" element={<LinkedInUpload/>} />
-            <Route path="/PreviewPage" element={<PreviewPage />} />
             <Route path="/ResumePage" element={<ResumePage />} />
           </Routes>
         </Router>

@@ -15,18 +15,13 @@ import GoogleButton from "react-google-button";
 import { useAuth } from "../context/AuthContext";
 
 const Login = () => {
-  // const { user , setUser} = useAuth();
   const navigate = useNavigate();
   const auth = getAuth();
   const user2 = auth.currentUser;
   if(user2){
     navigate("/");
-    // setUser(user2);
-    // console.log(user2); 
   }
-  // else{
-  //   setUser(null);
-  // }
+
   const [loginEmail, setloginEmail] = useState("");
   const [loginPassword, setloginPassword] = useState("");
   const { SignUp } = useAuth();
@@ -39,7 +34,6 @@ const Login = () => {
       (response) => {
         toast.success("Sucessfully LoggedIn");
         navigate("/HomePage");
-        // console.log(response);
       },
       (err) => {
         toast.error(err.message);
