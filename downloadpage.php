@@ -9,6 +9,7 @@ header("Content-Disposition: attachment; Filename=Resume.doc");
 <style>
 .name{
     font-size :25px;
+    width:auto;
     font-family: "Times New Roman", Times, serif;
 }
 .para{
@@ -33,11 +34,16 @@ header("Content-Disposition: attachment; Filename=Resume.doc");
   $sql2 = "select * from `ResumeInfo3`";
   $sql3 = "select * from `ResumeInfo4`";
   $sql4 = "select * from `ResumeInfo5`";
+  $sql5 = "select * from `ResumeInfo6`";
+  $sql6 = "select * from `ResumeInfo7`";
 
-  $result = mysqli_query($con,$sql);
+
+  $result  = mysqli_query($con,$sql);
   $result2 = mysqli_query($con,$sql2);
   $result3 = mysqli_query($con,$sql3);
   $result4 = mysqli_query($con,$sql4);
+  $result5 = mysqli_query($con,$sql5);
+  $result6 = mysqli_query($con,$sql6);
 
   if($result){
     while($row = mysqli_fetch_assoc($result)){
@@ -79,7 +85,7 @@ header("Content-Disposition: attachment; Filename=Resume.doc");
     }
 }
 echo '<hr>';
-
+echo '<div class="name mt">Education Details</div>';
 if($result2){
     while($row = mysqli_fetch_assoc($result2)){
         $id=$row['id'];
@@ -90,8 +96,6 @@ if($result2){
         echo '
 
         <div>
-        <br>
-            <div class="name mt">Education Details</div>
                 <div class="para">
                     <div class="para2">
                         '.$insti.'
@@ -109,6 +113,8 @@ if($result2){
     }
   }
   echo '<hr>';
+  echo '<div class="name mt">Project Details </div>';
+
   if($result3){
     while($row = mysqli_fetch_assoc($result3)){
         $id=$row['id'];
@@ -119,8 +125,6 @@ if($result2){
 
 
         <div>
-        <br>
-            <div class="name mt">Project Details</div>
                 <div class="para">
                     <div class="para2">
                         '.$name.'
@@ -138,6 +142,7 @@ if($result2){
     }
   }
   echo '<hr>';
+  echo '<div class="name mt">Certificates</div>';
   if($result4){
     while($row = mysqli_fetch_assoc($result4)){
         $id=$row['id'];
@@ -147,8 +152,6 @@ if($result2){
         echo '
 
         <div>
-        <br>
-            <div class="name mt">Certificates</div>
                 <div class="para">
                     <div class="para2">
                         '.$name.'
@@ -166,6 +169,48 @@ if($result2){
     }
   }
   echo '<hr>';
+  echo '<div class="name mt">Skills</div>';
+  if($result5){
+    while($row = mysqli_fetch_assoc($result5)){
+        $id=$row['id'];
+        $skill=$row['skills'];
+        echo '
+
+        <div>
+                <div class="para">
+                    <div class="para2">
+                        '.$skill.'
+                    </div>
+                </div>
+        </div>
+        ';
+    }
+  }
+
+  echo '<hr>';
+  echo '<div class="name mt">Accomplishements</div>';
+
+  if($result6){
+    while($row = mysqli_fetch_assoc($result6)){
+        $id=$row['id'];
+        $name=$row['name'];
+        $year=$row['year'];
+        echo '
+        <div>
+        <div class="para">
+            <div class="para2">
+                '.$name.'
+            </div>
+            <div class="para2">
+                '.$year.'
+            </div>
+        </div>
+        <br>
+    </div>
+    ';
+    }
+  }
+
 ?>
     
 </body>

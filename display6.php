@@ -14,43 +14,40 @@ include 'connect.php';
 </head>
 <body>
   <div class="h2 text-center my-4">
-    CERTIFICATION DETAILS
+    ACCOMPLISHMENTS
   </div>
     <div class="container my-1">
     <button class="btn btn-primary my-5">
-            <a href="create4.php" class="text-light"> 
-            Add Certificates
+            <a href="create6.php" class="text-light"> 
+            Add 
             </a>
         </button>
         <table class="table">
   <thead>
     <tr>
       <th scope="col">Id</th>
-      <th scope="col">Certificate Name</th>
-      <th scope="col">Issue Date</th>
-      <th scope="col">Organisation</th>
+      <th scope="col">Name</th>
+      <th scope="col">Year</th>
       <th scope="col">Operations</th>
     </tr>
   </thead>
   <tbody>
   <?php
-  $sql = "select * from `ResumeInfo5`";
+  $sql = "select * from `ResumeInfo7`";
   $result = mysqli_query($con,$sql);
   if($result){
     while($row = mysqli_fetch_assoc($result)){
         $id=$row['id'];
         $name=$row['name'];
-        $issue=$row['issue'];
-        $org=$row['organisation'];
+        $year=$row['year'];
         echo '
         <tr>
             <td>'.$id.'</td>
             <td>'.$name.'</td>
-            <td>'.$issue.'</td>
-            <td>'.$org.'</td>
+            <td>'.$year.'</td>
             <td>
-            <button class="btn btn-primary"><a href="update4.php?updateid='.$id.'" class="text-light">UPDATE</a></button>
-            <button class="btn btn-danger"><a href="delete4.php?deleteid='.$id.'" class="text-light">DELETE</a></button>
+            <button class="btn btn-primary"><a href="update6.php?updateid='.$id.'" class="text-light">UPDATE</a></button>
+            <button class="btn btn-danger"><a href="delete6.php?deleteid='.$id.'" class="text-light">DELETE</a></button>
           </td>
         </tr>';
     }
@@ -58,14 +55,16 @@ include 'connect.php';
   
   ?>
 
+
+
  
   </tbody>
 </table>
     </div>
     <div class="text-center">
-    <button class="btn btn-primary my-5 text-center">
-            <a href="create5.php" class="text-light"> 
-            NEXT
+    <button class="btn btn-dark my-5 text-center">
+            <a href="downloadpage.php" class="text-light"> 
+            GENERATE RESUME
             </a>
         </button>
         </div>

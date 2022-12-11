@@ -47,28 +47,28 @@ $cgpa=$row['cgpa'];
             <div class="mb-3 row">
               <label class="col-sm-2 col-form-label">First Name :</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" name="fname" placeholder="Enter First Name" value=<?php echo $insti;?>>
+                  <input type="text" class="form-control" name="insti" placeholder="Enter Institution name" value=<?php echo $insti;?>>
                 </div>
             </div>
 
             <div class="mb-3 row">
               <label class="col-sm-2 col-form-label">Last Name :</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" name="lname" placeholder="Enter Last Name" value=<?php echo $degree;?>>
+                  <input type="text" class="form-control" name="degree" placeholder="Enter degree" value=<?php echo $degree;?>>
                 </div>
             </div>
 
             <div class="mb-3 row">
               <label class="col-sm-2 col-form-label">Headline :</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" name="headline" placeholder="Enter Headline" value=<?php echo $year;?>> 
+                  <input type="text" class="form-control" name="year" placeholder="Enter year" value=<?php echo $year;?>> 
                 </div>
             </div>
 
             <div class="mb-3 row">
               <label class="col-sm-2 col-form-label">LinkedIn :</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" name="linkedin" placeholder="Enter Linkedin profile" value=<?php echo $cgpa;?>>
+                  <input type="text" class="form-control" name="cgpa" placeholder="Enter cgpa" value=<?php echo $cgpa;?>>
                 </div>
             </div>
             <button type="submit" class="btn btn-primary" name="submit" >UPDATE</button>

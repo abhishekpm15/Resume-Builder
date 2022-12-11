@@ -46,11 +46,11 @@ include 'connect.php';
         $cgpa=$row['cgpa'];
         echo '
         <tr>
-            <td>'.$id.'</td>
-            <td>'.$insti.'</td>
-            <td>'.$degree.'</td>
-            <td>'.$year.'</td>
-            <td>'.$cgpa.'</td>
+            <td>'.$row['id'].'</td>
+            <td>'.$row['institution'].'</td>
+            <td>'.$row['degree'].'</td>
+            <td>'.$row['year'].'</td>
+            <td>'.$row['cgpa'].'</td>
             <td>
             <button class="btn btn-primary"><a href="update2.php?updateid='.$id.'" class="text-light">UPDATE</a></button>
             <button class="btn btn-danger"><a href="delete2.php?deleteid='.$id.'" class="text-light">DELETE</a></button>
